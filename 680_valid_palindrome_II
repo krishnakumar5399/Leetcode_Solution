@@ -1,0 +1,40 @@
+class Solution {
+public:
+
+   bool checkPalindrome(string s,int i,int j){
+       while(i<=j){
+           if(s[i] != s[j]){
+               return false;
+           }
+           else{
+               i++;
+               j--;
+           }
+       }
+       return true;
+   }
+    bool validPalindrome(string s) {
+        int i = 0 ;
+        int j = s.length()-1;
+        while(i<=j){
+            if(s[i] == s[j]){
+                i++;
+                j--;
+            }
+            else{
+                // equal nhi hai mtlb 1 romoval karna hoga
+                //1. if ith remove
+                bool ans1 = checkPalindrome(s,i+1,j);
+                
+                //2. if jth remove
+                bool ans2 =checkPalindrome(s,i,j-1);
+
+                // if anyone of ans1 and ans2 is true then return true.
+                return ans1 ||ans2 ;
+
+            }
+        }
+        return true;
+        
+    }
+};
